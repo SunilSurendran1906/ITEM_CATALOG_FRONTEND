@@ -72,7 +72,7 @@ export default function Payment() {
     document.querySelector("#pay_btn").disabled = true;
     try {
       const { data } = await axios.post(
-        "/api/method/payment/process",
+        "https://item-catalog-pqff.onrender.com/api/method/payment/process",
         paymentData
       );
       const clientSecret = data.client_secret;

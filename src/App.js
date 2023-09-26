@@ -42,7 +42,9 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser);
     async function getStripeKey() {
-      const { data } = await axios.get("/api/method/stripeapi");
+      const { data } = await axios.get(
+        "https://item-catalog-pqff.onrender.com/api/method/stripeapi"
+      );
       setStripeApikey(data.stripeApiKey);
     }
     getStripeKey();
