@@ -4,7 +4,7 @@ import axios from "axios";
 export const addCartItem = (id, quantity) => async (dispatch) => {
   try {
     dispatch(addCartItemRequest());
-    const { data } = await axios.get(`/api/items/product/${id}`);
+    const { data } = await axios.get(`https://item-catalog-pqff.onrender.com/api/items/product/${id}`);
   
     dispatch(
       addCartItemSuccess({
