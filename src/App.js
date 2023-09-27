@@ -37,17 +37,16 @@ import UpdateOrder from "./components/Admin/UpdateOrder";
 import UserList from "./components/Admin/UserList";
 import UpdateUser from "./components/Admin/UpdateUser";
 import ReviewList from "./components/Admin/ReviewList";
+
 function App() {
-  const [stripeApiKey, setStripeApikey] = useState("");
+  const [stripeApiKey, setStripeApiKey] = useState("");
   useEffect(() => {
     store.dispatch(loadUser);
-    async function getStripeKey() {
-      const { data } = await axios.get(
-        "https://item-catalog-pqff.onrender.com/api/method/stripeapi"
-      );
-      setStripeApikey(data.stripeApiKey);
+    async function getStripeApiKey() {
+      const { data } = await axios.get("/api/method/stripeapi");
+      setStripeApiKey(data.stripeApiKey);
     }
-    getStripeKey();
+    getStripeApiKey();
   }, []);
 
   return (

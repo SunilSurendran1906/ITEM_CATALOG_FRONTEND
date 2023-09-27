@@ -14,6 +14,8 @@ import { validateShipping } from "../Cart/Shipping";
 import { createOrder } from "../../actions/OrderAction";
 import { clearError as clearOrderError } from "../../slices/orderSlice";
 
+const BE_URL = process.env.REACT_APP_SERVER_DOMAIN;
+
 export default function Payment() {
   const stripe = useStripe();
   const elements = useElements();
@@ -72,7 +74,7 @@ export default function Payment() {
     document.querySelector("#pay_btn").disabled = true;
     try {
       const { data } = await axios.post(
-        "https://item-catalog-pqff.onrender.com/api/method/payment/process",
+        `${BE_URL}/api/method/payment/process`,
         paymentData
       );
       const clientSecret = data.client_secret;
