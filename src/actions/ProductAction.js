@@ -36,7 +36,7 @@ export const getProducts =
   (keyword, price, category, rating, currentPage) => async (dispatch) => {
     try {
       dispatch(productsRequest());
-      let link = `/api/items/products?page=${currentPage}`;
+      let link = `https://item-catalog-pqff.onrender.com/api/items/products?page=${currentPage}`;
       if (keyword) {
         link += `&keyword=${keyword}`;
       }
@@ -61,8 +61,9 @@ export const getProducts =
 export const getProduct = (id) => async (dispatch) => {
   try {
     dispatch(productRequest());
-    const { data } = await axios.get(`/api/items/product/${id}`);
+    const { data } = await axios.get(`https://item-catalog-pqff.onrender.com/api/items/product/${id}`);
     dispatch(productSuccess(data));
+
   } catch (error) {
     // handle error
     dispatch(productFail(error.response.data.message));
@@ -77,7 +78,7 @@ export const createReview = (reviewData) => async (dispatch) => {
         "Content-type": "application/json",
       },
     };
-    const { data } = await axios.put(`/api/items/review`, reviewData, config);
+    const { data } = await axios.put(`https://item-catalog-pqff.onrender.com/api/items/review`, reviewData, config);
     dispatch(createReviewSuccess(data));
   } catch (error) {
     //handle error
@@ -87,7 +88,7 @@ export const createReview = (reviewData) => async (dispatch) => {
 export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch(adminProductsRequest());
-    const { data } = await axios.get("/api/items/admin/products");
+    const { data } = await axios.get("https://item-catalog-pqff.onrender.com/api/items/admin/products");
     dispatch(adminProductsSuccess(data));
   } catch (error) {
     // Handle error
@@ -99,7 +100,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
   try {
     dispatch(newProductRequest());
     const { data } = await axios.post(
-      "/api/items/admin/product/new",
+      "https://item-catalog-pqff.onrender.com/api/items/admin/product/new",
       productData
     );
     dispatch(newProductSuccess(data));
@@ -112,7 +113,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch(deleteProductRequest());
-    const { data } = await axios.delete(`/api/items/admin/product/${id}`);
+    const { data } = await axios.delete(`https://item-catalog-pqff.onrender.com/api/items/admin/product/${id}`);
     dispatch(deleteProductSuccess(data));
   } catch (error) {
     // Handle error
@@ -124,7 +125,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
   try {
     dispatch(updateProductRequest());
     const { data } = await axios.put(
-      `/api/items/admin/product/${id}`,
+      `https://item-catalog-pqff.onrender.com/api/items/admin/product/${id}`,
       productData
     );
     dispatch(updateProductSuccess(data));
@@ -137,7 +138,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 export const getReviews = (id) => async (dispatch) => {
   try {
     dispatch(reviewsRequest());
-    const { data } = await axios.get(`/api/items/admin/reviews`, {
+    const { data } = await axios.get(`https://item-catalog-pqff.onrender.com/api/items/admin/reviews`, {
       params: { id },
     });
     dispatch(reviewsSuccess(data));
@@ -150,7 +151,7 @@ export const getReviews = (id) => async (dispatch) => {
 export const deleteReview = (productId, id) => async (dispatch) => {
   try {
     dispatch(deleteReviewRequest());
-    await axios.delete(`/api/items/admin/review`, {
+    await axios.delete(`https://item-catalog-pqff.onrender.com/api/items/admin/review`, {
       params: { productId, id },
     });
     dispatch(deleteReviewSuccess());

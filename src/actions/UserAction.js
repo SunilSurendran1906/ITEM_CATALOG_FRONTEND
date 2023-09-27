@@ -42,7 +42,7 @@ import {
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch(loginRequest());
-    const { data } = await axios.post(`/api/auth/login`, { email, password });
+    const { data } = await axios.post(`https://item-catalog-pqff.onrender.com/api/auth/login`, { email, password });
     dispatch(loginSuccess(data));
   } catch (error) {
     dispatch(loginFail(error.response.data.message));
@@ -61,7 +61,7 @@ export const register = (userData) => async (dispatch) => {
         "content-type": "multipart/from-data",
       },
     };
-    const { data } = await axios.post(`/api/auth/register`, userData, config);
+    const { data } = await axios.post(`https://item-catalog-pqff.onrender.com/api/auth/register`, userData, config);
     dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(resgiterFail(error.response.data.message));
@@ -71,7 +71,7 @@ export const register = (userData) => async (dispatch) => {
 export const loadUser = async (dispatch) => {
   try {
     dispatch(loadUserRequest());
-    const { data } = await axios.get(`/api/auth/myprofile`);
+    const { data } = await axios.get(`https://item-catalog-pqff.onrender.com/api/auth/myprofile`);
     dispatch(loadUserSuccess(data));
   } catch (error) {
     dispatch(loadUserFail(error.response.data.message));
@@ -80,7 +80,7 @@ export const loadUser = async (dispatch) => {
 
 export const logout = async (dispatch) => {
   try {
-    await axios.get(`/api/auth/logout`);
+    await axios.get(`https://item-catalog-pqff.onrender.com/api/auth/logout`);
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutFail());
@@ -95,7 +95,7 @@ export const updateProfile = (userData) => async (dispatch) => {
         "content-type": "multipart/from-data",
       },
     };
-    const { data } = await axios.put(`/api/auth/update`, userData, config);
+    const { data } = await axios.put(`https://item-catalog-pqff.onrender.com/api/auth/update`, userData, config);
     dispatch(updateProfileSuccess(data));
   } catch (error) {
     dispatch(updateProfileFail(error.response.data.message));
@@ -110,7 +110,7 @@ export const updatePassword = (formData) => async (dispatch) => {
         "Content-type": "application/json",
       },
     };
-    await axios.put(`/api/auth/password/change`, formData, config);
+    await axios.put(`https://item-catalog-pqff.onrender.com/api/auth/password/change`, formData, config);
     dispatch(updatePasswordSuccess());
   } catch (error) {
     dispatch(updatePasswordFail(error.response.data.message));
@@ -126,7 +126,7 @@ export const forgetPassword = (formData) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/auth/password/forget`,
+      `https://item-catalog-pqff.onrender.com/api/auth/password/forget`,
       formData,
       config
     );
@@ -144,9 +144,9 @@ export const resetPassword = (formData, token) => async (dispatch) => {
         "Content-type": "application/json",
       },
     };
-
+  
     const { data } = await axios.post(
-      `/api/auth/password/reset/${token}`,
+      `https://item-catalog-pqff.onrender.com/api/auth/password/reset/${token}`,
       formData,
       config
     );
@@ -159,7 +159,7 @@ export const resetPassword = (formData, token) => async (dispatch) => {
 export const getUsers = async (dispatch) => {
   try {
     dispatch(usersRequest());
-    const { data } = await axios.get(`/api/auth/admin/users`);
+    const { data } = await axios.get(`https://item-catalog-pqff.onrender.com/api/auth/admin/users`);
     dispatch(usersSuccess(data));
   } catch (error) {
     dispatch(usersFail(error.response.data.message));
@@ -169,7 +169,7 @@ export const getUsers = async (dispatch) => {
 export const getUser = (id) => async (dispatch) => {
   try {
     dispatch(userRequest());
-    const { data } = await axios.get(`/api/auth/admin/user/${id}`);
+    const { data } = await axios.get(`https://item-catalog-pqff.onrender.com/api/auth/admin/user/${id}`);
     dispatch(userSuccess(data));
   } catch (error) {
     dispatch(userFail(error.response.data.message));
@@ -179,7 +179,7 @@ export const getUser = (id) => async (dispatch) => {
 export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch(deleteUserRequest());
-    await axios.delete(`/api/auth/admin/user/${id}`);
+    await axios.delete(`https://item-catalog-pqff.onrender.com/api/auth/admin/user/${id}`);
     dispatch(deleteUserSuccess());
   } catch (error) {
     dispatch(deleteUserFail(error.response.data.message));
@@ -194,7 +194,7 @@ export const updateUser = (id, formData) => async (dispatch) => {
         "Content-type": "application/json",
       },
     };
-    await axios.put(`/api/auth/admin/user/${id}`, formData, config);
+    await axios.put(`https://item-catalog-pqff.onrender.com/api/auth/admin/user/${id}`, formData, config);
     dispatch(updateUserSuccess());
   } catch (error) {
     dispatch(updateUserFail(error.response.data.message));
