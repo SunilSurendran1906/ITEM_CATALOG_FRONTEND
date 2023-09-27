@@ -74,7 +74,7 @@ export default function Payment() {
     document.querySelector("#pay_btn").disabled = true;
     try {
       const { data } = await axios.post(
-        `${BE_URL}/api/method/payment/process`,
+        `/api/method/payment/process`,
         paymentData
       );
       const clientSecret = data.client_secret;
