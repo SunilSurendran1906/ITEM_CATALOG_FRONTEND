@@ -1,6 +1,6 @@
 ITEM_CATALOG:ECOMMERCE WEBSITE USING MERN STACK
 
-admin-user:rusnil0603@gmail.com
+admin-user:rsunil0603@gmail.com
 pwd:1234
 
 https://item-catalog.netlify.app/
